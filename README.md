@@ -1,8 +1,20 @@
+# Lerobot Main Move
+
+## Introduction
+
+本项目基于 Lerobot 项目进行扩展，开发了一款自主设计组装的移动机器人系统。该系统采用 gen72 机械臂和 mick_chassis 移动底盘，在原有静态遥操作功能的基础上，增加了动态遥操作功能，实现了移动机器人的一体化遥操作。
+
+主要改进包括：
+1. 自主设计了 gen72 机械臂的 dynamixel 电机遥操作臂，并在 `lerobot-main-move\lerobot\common\robot_devices\robots\mobile_manipulator.py` 文件中完成了适配。
+2. 使用工业级机器人替代了原有的由 dynamixel 电机驱动的机械臂，并在 `lerobot-main-move\lerobot\common\robot_devices\robots` 目录中剥离了原有从动臂的相关代码。
+3. 在 `lerobot-main-move\lerobot\common\robot_devices\robots\lekiwi_remote.py` 文件中实现了对机器人的控制和数据反馈功能。
+4. 为提高机器人操作的流畅度及对不同相机、机械臂和底盘的适应性，在 `lerobot-main-move\lerobot\common\robot_devices\remote_robot` 目录中采用抽象工厂设计模式，实现了对不同机器人底盘的控制，并预留了扩展接口。
+
 # Quick Start
 
 ## Installation
 
-以下操作请在Linux环境下进行，推荐`Ubuntu 20.04`及以上，`CentOS 8`及以上，`openEuler 22.03 LTS`及以上或`Arch Linux`等，内核版本大于等于`5.5`，可通过```uname -a```命令查看系统内核版本。
+以下操作请在Linux环境下进行，推荐`Ubuntu 22.04`及以上，`CentOS 8`及以上，`openEuler 22.03 LTS`及以上或`Arch Linux`等，内核版本大于等于`5.5`，可通过```uname -a```命令查看系统内核版本。
 
 将本仓库克隆到本地，```cd```到所克隆的仓库目录并安装依赖，在此之前请确保系统中已安装miniconda或者anaconda并激活环境：
 
